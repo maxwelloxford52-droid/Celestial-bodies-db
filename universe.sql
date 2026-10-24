@@ -44,10 +44,10 @@ SET default_tablespace = '';
 SET default_table_access_method = heap;
 
 --
--- Name: asteroids; Type: TABLE; Schema: public; Owner: freecodecamp
+-- Name: asteroid; Type: TABLE; Schema: public; Owner: freecodecamp
 --
 
-CREATE TABLE public.asteroids (
+CREATE TABLE public.asteroid (
     name character varying(30) NOT NULL,
     asteroid_id integer NOT NULL,
     orbital_period integer,
@@ -59,7 +59,7 @@ CREATE TABLE public.asteroids (
 );
 
 
-ALTER TABLE public.asteroids OWNER TO freecodecamp;
+ALTER TABLE public.asteroid OWNER TO freecodecamp;
 
 --
 -- Name: asteroids_asteroid_id_seq; Type: SEQUENCE; Schema: public; Owner: freecodecamp
@@ -80,7 +80,7 @@ ALTER TABLE public.asteroids_asteroid_id_seq OWNER TO freecodecamp;
 -- Name: asteroids_asteroid_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: freecodecamp
 --
 
-ALTER SEQUENCE public.asteroids_asteroid_id_seq OWNED BY public.asteroids.asteroid_id;
+ALTER SEQUENCE public.asteroids_asteroid_id_seq OWNED BY public.asteroid.asteroid_id;
 
 
 --
@@ -242,10 +242,10 @@ ALTER SEQUENCE public.star_star_id_seq OWNED BY public.star.star_id;
 
 
 --
--- Name: asteroids asteroid_id; Type: DEFAULT; Schema: public; Owner: freecodecamp
+-- Name: asteroid asteroid_id; Type: DEFAULT; Schema: public; Owner: freecodecamp
 --
 
-ALTER TABLE ONLY public.asteroids ALTER COLUMN asteroid_id SET DEFAULT nextval('public.asteroids_asteroid_id_seq'::regclass);
+ALTER TABLE ONLY public.asteroid ALTER COLUMN asteroid_id SET DEFAULT nextval('public.asteroids_asteroid_id_seq'::regclass);
 
 
 --
@@ -277,13 +277,13 @@ ALTER TABLE ONLY public.star ALTER COLUMN star_id SET DEFAULT nextval('public.st
 
 
 --
--- Data for Name: asteroids; Type: TABLE DATA; Schema: public; Owner: freecodecamp
+-- Data for Name: asteroid; Type: TABLE DATA; Schema: public; Owner: freecodecamp
 --
 
-INSERT INTO public.asteroids VALUES ('Vesta', 1, 1325, 'Brightest asteroid', 525.5, 1807, false, false);
-INSERT INTO public.asteroids VALUES ('Pallas', 2, 1687, 'The inclined orbit', 512, 1802, false, false);
-INSERT INTO public.asteroids VALUES ('Eros', 3, 643, 'Elongated strands', 16.8, 1898, false, true);
-INSERT INTO public.asteroids VALUES ('Bennu', 4, 437, 'Rich in carbon', 0.49, 1999, false, true);
+INSERT INTO public.asteroid VALUES ('Vesta', 1, 1325, 'Brightest asteroid', 525.5, 1807, false, false);
+INSERT INTO public.asteroid VALUES ('Pallas', 2, 1687, 'The inclined orbit', 512, 1802, false, false);
+INSERT INTO public.asteroid VALUES ('Eros', 3, 643, 'Elongated strands', 16.8, 1898, false, true);
+INSERT INTO public.asteroid VALUES ('Bennu', 4, 437, 'Rich in carbon', 0.49, 1999, false, true);
 
 
 --
@@ -390,18 +390,18 @@ SELECT pg_catalog.setval('public.star_star_id_seq', 1, false);
 
 
 --
--- Name: asteroids asteroids_name_key; Type: CONSTRAINT; Schema: public; Owner: freecodecamp
+-- Name: asteroid asteroids_name_key; Type: CONSTRAINT; Schema: public; Owner: freecodecamp
 --
 
-ALTER TABLE ONLY public.asteroids
+ALTER TABLE ONLY public.asteroid
     ADD CONSTRAINT asteroids_name_key UNIQUE (name);
 
 
 --
--- Name: asteroids asteroids_pkey; Type: CONSTRAINT; Schema: public; Owner: freecodecamp
+-- Name: asteroid asteroids_pkey; Type: CONSTRAINT; Schema: public; Owner: freecodecamp
 --
 
-ALTER TABLE ONLY public.asteroids
+ALTER TABLE ONLY public.asteroid
     ADD CONSTRAINT asteroids_pkey PRIMARY KEY (asteroid_id);
 
 
